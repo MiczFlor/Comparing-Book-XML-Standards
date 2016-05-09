@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
     <title>Comparison of XML structures for books</title>
   </head>
   <body>
@@ -201,11 +202,25 @@ example, it would have made more sense.  Or less.
         </tr>
         <tr>
           <td>DocBook 5.1</td>
-          <td><br>
+          <td>
+            <pre>&lt;para&gt;&lt;emphasis role="bold"&gt;Bold&lt;/emphasis&gt;&lt;/para&gt;</pre>
+            <a href="https://www.k15t.com/display/DBK21/Inline+Formatting+Elements">https://www.k15t.com/display/DBK21/Inline+Formatting+Elements</a><br>
           </td>
-          <td><br>
+          <td>
+            <meta http-equiv="content-type" content="text/html; charset=utf-8">
+            <pre style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;">&lt;para&gt;The &lt;emphasis&gt;most&lt;/emphasis&gt; important example of this
+    phenomenon occurs in A. Nonymous's book
+  6 &lt;citetitle&gt;Power Snacking&lt;/citetitle&gt;.
+&lt;/para&gt;</pre>
+            <a href="http://www.docbook.org/tdg5/en/html/emphasis.html">http://www.docbook.org/tdg5/en/html/emphasis.html</a><br>
+            <br>
+            Might be better (?):<br>
+            <pre>&lt;para&gt;&lt;emphasis role="italics"&gt;Italic&lt;/emphasis&gt;&lt;/para&gt;</pre>
+            <a href="https://www.k15t.com/display/DBK21/Inline+Formatting+Elements">https://www.k15t.com/display/DBK21/Inline+Formatting+Elements</a>
           </td>
-          <td><br>
+          <td>
+            <pre>&lt;para&gt;&lt;emphasis role="underline"&gt;Underline&lt;/emphasis&gt;&lt;/para&gt;</pre>
+            <a href="https://www.k15t.com/display/DBK21/Inline+Formatting+Elements">https://www.k15t.com/display/DBK21/Inline+Formatting+Elements</a><br>
           </td>
           <td><br>
           </td>
