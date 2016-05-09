@@ -1,0 +1,553 @@
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <title>xml-new.html</title>
+  </head>
+  <body>
+    <h1>Comparison of XML structures for books</h1>
+    <p>There are books. Besides all the different ways of how people talk about
+      "knowledge production", the book has prevailed. Call it a collection of
+      articles or a container for text and media elements, people will still
+      call it a book. The content and structure of a book is generated and
+      stored in different ways. The below list is an attempt to compare
+      different XML concepts that try to define and describe a book. </p>
+    <p>This document is a work in progress, a research we are undertaking to
+      identify what would be the most "productive" way to add XML-export to
+      Booktype. Along the way of this research, it became clear that this might
+      be of general interest. Feel free to chip in with pull requests to keep
+      this up to date and extend it.</p>
+    <h2>Links to explore</h2>
+    <ul>
+      <li>DocBook 5.1:&nbsp; The Definitive Guide: <a href="http://docbook.org/tdg51/en/html/docbook.html">http://docbook.org/tdg51/en/html/docbook.html</a></li>
+      <li>HTMLBook. Unofficial Draft <a href="http://oreillymedia.github.io/HTMLBook/">http://oreillymedia.github.io/HTMLBook/</a></li>
+      <li>Open XML Paper Specification Standard ECMA-388 <a href="Open%20XML%20Paper%20Specification%20">
+          http://www.ecma-international.org/publications/standards/Ecma-388.htm</a></li>
+      <li>Book and Collection Tag Library version 3.0 <a href="Book%20and%20Collection%20Tag%20Libraryversion%203.0">http://dtd.nlm.nih.gov/book/tag-library/</a></li>
+      <li>Booktype: <a href="https://booktype.pro">https://booktype.pro</a></li>
+    </ul>
+    <h2>XML elements and structure</h2>
+    <h3>Paragraph formats</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td>Normal</td>
+          <td>Header</td>
+          <td>Heading (title)</td>
+          <td>SubHeading</td>
+          <td>SubSubHeading</td>
+          <td>Pre-Formated</td>
+          <td>Quote</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td>y</td>
+          <td>n</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td>
+            <pre>&lt;formalpara&gt;&lt;title&gt;This Paragraph Has a Title&lt;/title&gt;
+&lt;para&gt;This is a test.  This is only a test.  Had this been a real
+example, it would have made more sense.  Or less.
+&lt;/para&gt;
+&lt;/formalpara&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/formalpara.html">http://docbook.org/tdg51/en/html/formalpara.html</a><br>
+            <a href="http://docbook.org/tdg51/en/html/para.html">http://docbook.org/tdg51/en/html/para.html</a><br>
+          </td>
+          <td>
+            <pre>&lt;article xmlns='http://docbook.org/ns/docbook'&gt;
+&lt;title&gt;Example title&lt;/title&gt;
+&lt;section&gt;
+  &lt;title&gt;A Top Level Section&lt;/title&gt;
+  &lt;para&gt;Actual content.&lt;/para&gt;
+&lt;/section&gt;
+&lt;/article&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/title.html">http://docbook.org/tdg51/en/html/title.html</a>
+          </td>
+          <td><br>
+          </td>
+          <td><a href="http://docbook.org/tdg51/en/html/subtitle.html">http://docbook.org/tdg51/en/html/subtitle.html</a>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>HTML Book</td>
+          <td>
+            <pre data-type="programlisting">&lt;p&gt;This is a standard paragraph with some &lt;em&gt;emphasized text&lt;/em&gt;&lt;/p&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_paragraph">http://oreillymedia.github.io/HTMLBook/#_paragraph</a>
+          </td>
+          <td><br>
+            <pre data-type="programlisting">&lt;section data-type="chapter"&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Chapter title&lt;/h1&gt;
+    &lt;p data-type="subtitle"&gt;Chapter subtitle&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;!-- Chapter content here... --&gt;
+&lt;/section&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#header_block">http://oreillymedia.github.io/HTMLBook/#header_block</a>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_heading_elements">http://oreillymedia.github.io/HTMLBook/#_heading_elements</a><br>
+            <br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td>
+            <pre data-type="programlisting">&lt;blockquote&gt;
+  &lt;p&gt;When in the course of human events...&lt;/p&gt;
+  &lt;p data-type="attribution"&gt;U.S. Declaration of Independence&lt;/p&gt;
+&lt;/blockquote&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_blockquote">http://oreillymedia.github.io/HTMLBook/#_blockquote</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Alignment</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td>Left</td>
+          <td>Right</td>
+          <td>Center</td>
+          <td>Justified</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>HTML Book<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Font formatting</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td>Bold </td>
+          <td style="height: 19px;">Italicise</td>
+          <td>Underline</td>
+          <td>Color</td>
+          <td>Font-size</td>
+          <td>Font-family</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y<br>
+          </td>
+        </tr>
+        <tr>
+          <td>XML Standard</td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>HTML Book</td>
+          <td>
+            <pre data-type="programlisting">&lt;p&gt;I &lt;strong&gt;love&lt;/strong&gt; HTML!&lt;/p&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_strong_generally_for_bold">http://oreillymedia.github.io/HTMLBook/#_strong_generally_for_bold</a></td>
+          <td>
+            <pre data-type="programlisting">&lt;p&gt;I &lt;em&gt;love&lt;/em&gt; HTML!&lt;/p&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_emphasis_generally_for_italic">http://oreillymedia.github.io/HTMLBook/#_emphasis_generally_for_italic</a></td>
+          <td>
+            <pre data-type="programlisting">&lt;p&gt;Use your own class attributes for custom <br>styling for formatting like <br>&lt;span class="underline"&gt;underlined text&lt;/span&gt;<br>&lt;/p&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_general_purpose_phrase_markup_for_other_styling_underline_strikethrough_etc">http://oreillymedia.github.io/HTMLBook/#_general_purpose_phrase_markup_for_other_styling_underline_strikethrough_etc</a></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3> Other elements</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td style="height: 19px;">Links (anchor)</td>
+          <td>Unordered (itemized) list</td>
+          <td>Ordered list</td>
+          <td>Right to left text</td>
+          <td>Chapter endnotes</td>
+          <td>Footnotes</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y</td>
+          <td>y<br>
+          </td>
+          <td>y</td>
+          <td>n</td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td>
+            <pre>&lt;para&gt;The anchor element&lt;anchor xml:id="example.anchor.1"/&gt; is empty and contributes
+nothing to the flow of the content in which it occurs.  It is only useful
+as a target.
+&lt;/para&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/anchor.html">http://docbook.org/tdg51/en/html/anchor.html</a></td>
+          <td>
+            <pre>&lt;itemizedlist mark='opencircle'&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;TeX and LaTeX
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem override='bullet'&gt;
+    &lt;para&gt;Troff
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;Lout
+    &lt;/para&gt;
+  &lt;/listitem&gt;
+&lt;/itemizedlist&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/itemizedlist.html">http://docbook.org/tdg51/en/html/itemizedlist.html</a></td>
+          <td>
+            <pre>&lt;orderedlist numeration="lowerroman"&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;One&lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;Two&lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;Three&lt;/para&gt;
+  &lt;/listitem&gt;
+  &lt;listitem&gt;
+    &lt;para&gt;Four&lt;/para&gt;
+  &lt;/listitem&gt;
+&lt;/orderedlist&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/orderedlist.html">http://docbook.org/tdg51/en/html/orderedlist.html</a></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td>
+            <pre>&lt;para&gt;An annual percentage rate (&lt;abbrev&gt;APR&lt;/abbrev&gt;) of 13.9%<br>&lt;footnote&gt;
+&lt;para&gt;The prime rate, as published in the &lt;citetitle&gt;Wall Street
+Journal&lt;/citetitle&gt; on the first business day of the month,
+plus 7.0%.
+&lt;/para&gt;
+&lt;/footnote&gt;
+will be charged on all balances carried forward.
+&lt;/para&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/footnote.html">http://docbook.org/tdg51/en/html/footnote.html</a><br>
+            <a href="http://docbook.org/tdg51/en/html/footnoteref.html">http://docbook.org/tdg51/en/html/footnoteref.html</a></td>
+        </tr>
+        <tr>
+          <td>HTML Book</td>
+          <td><br>
+          </td>
+          <td>
+            <pre data-type="programlisting">&lt;ul&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Orange&lt;/li&gt;
+&lt;!-- And so on --&gt;
+&lt;/ul&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_itemized_lists">http://oreillymedia.github.io/HTMLBook/#_itemized_lists</a></td>
+          <td>
+            <pre data-type="programlisting">&lt;ol&gt;
+&lt;li&gt;Step 1&lt;/li&gt;
+&lt;li&gt;
+  &lt;p&gt;Step 2&lt;/p&gt;
+  &lt;p&gt;Step 2 continued&lt;/p&gt;
+&lt;/li&gt;
+&lt;!-- And so on --&gt;
+&lt;/ol&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_ordered_lists">http://oreillymedia.github.io/HTMLBook/#_ordered_lists</a></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td>
+            <pre data-type="programlisting">&lt;p&gt;Five out of every six people who try AsciiDoc prefer it to 
+Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&lt;/p&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_footnote_endnote">http://oreillymedia.github.io/HTMLBook/#_footnote_endnote</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Tables</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td>Tables</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td>y</td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td>
+            <pre>&lt;article xmlns='http://docbook.org/ns/docbook'&gt;
+&lt;title&gt;Example table&lt;/title&gt;
+
+&lt;table xml:id="ex.htmltable"&gt;
+&lt;caption&gt;Sample HTML Table&lt;/caption&gt;
+&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Head 1&lt;/td&gt;
+    &lt;td&gt;Head 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Body 1&lt;/td&gt;
+    &lt;td&gt;Body 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;/article&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/html.table.html">http://docbook.org/tdg51/en/html/html.table.html</a><br>
+          </td>
+        </tr>
+        <tr>
+          <td>HTML Book</td>
+          <td>
+            <pre data-type="programlisting">&lt;table&gt;
+&lt;caption&gt;State capitals&lt;/caption&gt;
+&lt;tr&gt;
+  &lt;th&gt;State&lt;/th&gt;
+  &lt;th&gt;Capital&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Massachusetts&lt;/td&gt;
+  &lt;td&gt;Boston&lt;/td&gt;
+&lt;/tr&gt;
+&lt;!-- And so on --&gt;
+&lt;/table&gt;</pre>
+            <pre data-type="programlisting">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;First&lt;/th&gt;
+      &lt;th&gt;Middle Initial&lt;/th&gt;
+      &lt;th&gt;Last&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Alfred&lt;/td&gt;
+      &lt;td&gt;E.&lt;/td&gt;
+      &lt;td&gt;Newman&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;!-- And so on --&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_tables">http://oreillymedia.github.io/HTMLBook/#_tables</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Images / figures</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td>Figures</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td>y</td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td>
+            <pre>&lt;informalfigure&gt;
+&lt;mediaobject&gt;
+  &lt;imageobject condition="print"&gt;
+    &lt;info&gt;
+      &lt;author&gt;
+        &lt;personname&gt;
+          &lt;firstname&gt;Norman&lt;/firstname&gt;
+          &lt;surname&gt;Walsh&lt;/surname&gt;
+        &lt;/personname&gt;
+      &lt;/author&gt;
+      &lt;pubdate&gt;1998&lt;/pubdate&gt;
+    &lt;/info&gt;
+
+    &lt;imagedata fileref="figs/print/db5d_ref10.pdf" format="PDF" role="keep-together"/&gt;
+  &lt;/imageobject&gt;
+
+  &lt;imageobject condition="web"&gt;
+    &lt;imagedata fileref="figs/web/db5d_ref10.png" format="PNG"/&gt;
+  &lt;/imageobject&gt;
+
+  &lt;textobject&gt;
+    &lt;phrase&gt;Wat Arun&lt;/phrase&gt;
+  &lt;/textobject&gt;
+
+  &lt;caption&gt;&lt;para&gt;Wat Arun, Temple of the Dawn, on the Chao Phraya
+  River in Bangkok, Thailand. In April 1998, Wat Arun was in the
+  midst of renovation.&lt;/para&gt;&lt;/caption&gt;
+&lt;/mediaobject&gt;
+&lt;/informalfigure&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/informalfigure.html">http://docbook.org/tdg51/en/html/informalfigure.html</a><br>
+          </td>
+        </tr>
+        <tr>
+          <td>HTML Book</td>
+          <td>
+            <pre data-type="programlisting">&lt;figure&gt;
+&lt;figcaption&gt;Adorable cat&lt;/figcaption&gt;
+&lt;img src="cute_kitty.gif" alt="Photo of an adorable cat"/&gt;
+&lt;/figure&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_figures">http://oreillymedia.github.io/HTMLBook/#_figures</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Structure</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td style="height: 19px;">Part</td>
+          <td>Chapter</td>
+          <td>SubChapter</td>
+          <td>SubSubChapter</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td>y (called Section)</td>
+          <td>y</td>
+          <td>n</td>
+          <td>n<br>
+          </td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td><a href="http://docbook.org/tdg51/en/html/part.html">http://docbook.org/tdg51/en/html/part.html</a></td>
+          <td><a href="http://docbook.org/tdg51/en/html/chapter.html">http://docbook.org/tdg51/en/html/chapter.html</a></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>HTML Book</td>
+          <td>
+            <pre data-type="programlisting">&lt;div data-type="part"&gt;
+  &lt;h1&gt;Part One: Introduction to Backbone.js&lt;/h1&gt;
+  &lt;p&gt;Part Introduction...&lt;/p&gt;
+  &lt;section data-type="chapter"&gt;
+    &lt;!-- Chapter content here --&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_part">http://oreillymedia.github.io/HTMLBook/#_part</a></td>
+          <td>
+            <pre data-type="programlisting">&lt;section data-type="chapter"&gt;
+  &lt;!-- h1 used for all chapter titles --&gt;
+  &lt;h1&gt;Chapter Title&lt;/h1&gt;
+  &lt;p&gt;Chapter content&lt;/p&gt;
+  &lt;section data-type="sect1"&gt;
+    &lt;!-- Section content here... --&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_chapter">http://oreillymedia.github.io/HTMLBook/#_chapter</a></td>
+          <td>
+            <pre data-type="programlisting">&lt;section data-type="sect1"&gt;
+    &lt;!-- Section content here... --&gt;
+&lt;/section&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_sections">http://oreillymedia.github.io/HTMLBook/#_sections</a><br>
+          </td>
+          <td>
+            <pre data-type="programlisting">&lt;section data-type="sect1"&gt;
+  &lt;h1&gt;A-Head&lt;/h1&gt;
+  &lt;p&gt;If you httpparty, you must party hard&lt;/p&gt;
+  &lt;!-- Some more paragraphs --&gt;
+  &lt;section data-type="sect2"&gt;
+    &lt;h2&gt;B-Head&lt;/h2&gt;
+    &lt;p&gt;What's the frequency, Kenneth?&lt;/p&gt;
+    &lt;!-- And so on... --&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</pre>
+            <a href="http://oreillymedia.github.io/HTMLBook/#_sections">http://oreillymedia.github.io/HTMLBook/#_sections</a><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
