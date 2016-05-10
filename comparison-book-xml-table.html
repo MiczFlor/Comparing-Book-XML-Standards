@@ -17,6 +17,9 @@
       Booktype. Along the way of this research, it became clear that this might
       be of general interest. Feel free to chip in with pull requests to keep
       this up to date and extend it.</p>
+    <p>(I am also adding some LaTeX in the last row of this comparison sheet,
+      because we are also considering TeX as an output channel for PDF
+      rendering. Sorry for mixing this up a little.)</p>
     <h2>Links to explore</h2>
     <ul>
       <li>DocBook 5.1:&nbsp; The Definitive Guide: <a href="http://docbook.org/tdg51/en/html/docbook.html">http://docbook.org/tdg51/en/html/docbook.html</a></li>
@@ -25,17 +28,18 @@
           http://www.ecma-international.org/publications/standards/Ecma-388.htm</a></li>
       <li>Book and Collection Tag Library version 3.0 <a href="Book%20and%20Collection%20Tag%20Libraryversion%203.0">http://dtd.nlm.nih.gov/book/tag-library/</a></li>
       <li>Booktype: <a href="https://booktype.pro">https://booktype.pro</a></li>
+      <li> XeTex-Theme4BooktypePDF: <a href="XeTeX%20book%20templates">https://github.com/MiczFlor/XeTeX-Theme4BooktypePDF</a></li>
     </ul>
     <h2>XML elements and structure</h2>
     <h3>Paragraph formats</h3>
-    <table border="1" cellpadding="4">
+    <table cellpadding="4" border="1">
       <tbody>
         <tr>
           <td><br>
           </td>
           <td>Normal</td>
           <td>Header</td>
-          <td>Heading (title)</td>
+          <td>Heading (chapter title)</td>
           <td>SubHeading</td>
           <td>SubSubHeading</td>
           <td>Pre-Formated</td>
@@ -117,10 +121,31 @@ example, it would have made more sense.  Or less.
             <a href="http://oreillymedia.github.io/HTMLBook/#_blockquote">http://oreillymedia.github.io/HTMLBook/#_blockquote</a><br>
           </td>
         </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td>UTF-8 encoded text, seperated with empty lines</td>
+          <td><br>
+          </td>
+          <td>
+            <pre>\chapter{Chapter title and text examples}</pre>
+          </td>
+          <td>
+            <pre>\section{Style "SubHeading" in Booktype}</pre>
+          </td>
+          <td>
+            <pre>\subsection{Style "SubSubHeading" in Booktype}</pre>
+          </td>
+          <td>
+            <pre>\texttt{Style "preformatted" Sed diam nonumy eirmod.}</pre>
+          </td>
+          <td>
+            <pre>\begin{quote}<br>Paragraph style "Quote" Lorem ipsum dolor sit<br>amet, consetetur sadipscing elitr.<br>\end{quote}</pre>
+          </td>
+        </tr>
       </tbody>
     </table>
     <h3>Alignment</h3>
-    <table border="1" cellpadding="4">
+    <table cellpadding="4" border="1">
       <tbody>
         <tr>
           <td><br>
@@ -160,10 +185,23 @@ example, it would have made more sense.  Or less.
           <td><br>
           </td>
         </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td>
+            <pre>\begin{flushleft}<br>Left aligned text. Lorem ipsum dolor sit amet, consetetur<br>sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore<br>et dolore magna aliquamet.<br>\end{flushleft}</pre>
+          </td>
+          <td>
+            <pre>\begin{flushright}<br>Right aligned text. <br>Lorem ipsum dolor sit amet, <br>consetetur sadipscing elitr.<br>\end{flushright}</pre>
+          </td>
+          <td>
+            <pre>\begin{center}<br>Center aligned text. <br>Lorem ipsum dolor sit amet, <br>consetetur sadipscing elitr.<br>\end{center}</pre>
+          </td>
+          <td>Justified text is default</td>
+        </tr>
       </tbody>
     </table>
     <h3>Font formatting</h3>
-    <table border="1" cellpadding="4">
+    <table cellpadding="4" border="1">
       <tbody>
         <tr>
           <td><br>
@@ -207,7 +245,6 @@ example, it would have made more sense.  Or less.
             <a href="https://www.k15t.com/display/DBK21/Inline+Formatting+Elements">https://www.k15t.com/display/DBK21/Inline+Formatting+Elements</a><br>
           </td>
           <td>
-            <meta http-equiv="content-type" content="text/html; charset=utf-8">
             <pre style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;">&lt;para&gt;The &lt;emphasis&gt;most&lt;/emphasis&gt; important example of this
     phenomenon occurs in A. Nonymous's book
   6 &lt;citetitle&gt;Power Snacking&lt;/citetitle&gt;.
@@ -247,10 +284,34 @@ example, it would have made more sense.  Or less.
           <td><br>
           </td>
         </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td>
+            <pre>\textbf{some bold text}</pre>
+            Embedded:<br>
+            <pre>\textit{italicise now, \textbf{then some bold}, back to <br>italics only} and back to normal.</pre>
+          </td>
+          <td>
+            <pre>\textit{some italicised text}</pre>
+            Embedded:<br>
+            <pre>\textbf{starting bold now, \textit{then some italics}, back to <br>bold only} and <br>back to normal.</pre>
+          </td>
+          <td><br>
+          </td>
+          <td>
+            <pre>\textcolor[rgb]{1,0,0}{This is \textbf{red}.}<br>\textcolor[rgb]{0,0,1}{And this is \textbf{blue}.}<br>\textcolor[rgb]{0,1,0}{This is \textit{green}.}<br>\textcolor[rgb]{0.5,0.5,0.5}{\textbf{And pale are you}.}</pre>
+          </td>
+          <td>Set in the document config. <br>
+            Inline font size changes:<br>
+            <pre>\font\FontSizeSixteenPT="Ubuntu" at 16pt</pre>
+            <pre>{\FontSizeSixteenPT 16pt is the size of this paragraph.}</pre>
+          </td>
+          <td>Set in document config.</td>
+        </tr>
       </tbody>
     </table>
     <h3> Other elements</h3>
-    <table border="1" cellpadding="4">
+    <table cellpadding="4" border="1">
       <tbody>
         <tr>
           <td><br>
@@ -358,10 +419,32 @@ will be charged on all balances carried forward.
 Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&lt;/p&gt;</pre>
             <a href="http://oreillymedia.github.io/HTMLBook/#_footnote_endnote">http://oreillymedia.github.io/HTMLBook/#_footnote_endnote</a></td>
         </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td>
+            <pre>Here's a link to \href{https://booktype.pro/}{booktype.pro}. <br>Booktype allows authors to create beautiful books <br>for print and digital distribution. Find out <br>\href{https://booktype.pro/en/booktype/screenshots/}{more on our<br>features page}.</pre>
+            Using: <a href="http://www.ctan.org/tex-archive/macros/latex/contrib/hyperref%5Cusepackage[hidelinks]%7Bhyperref%7D">http://www.ctan.org/tex-archive/macros/latex/contrib/hyperref</a>
+            <br>
+            In Preamble:<br>
+            \usepackage[hidelinks]{hyperref}</td>
+          <td>
+            <pre>\begin{itemize}<br>\item A bullet point item could be anywhere in the list<br>\item The same here with a\\forced line break inside<br>\item And the last item is not telling us anything useful either<br>\end{itemize}</pre>
+          </td>
+          <td>
+            <pre>\begin{enumerate}&nbsp; <br>\item the first item on the list <br>\item the second item on the list <br>\item with\\a forced line break within the list<br>\item and the last item on the list<br>\end{enumerate}</pre>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td>
+            <pre>dolores et ea rebum\footnote{This is a <br>footnote in the middle of<br>a paragraph.}. Stet clita</pre>
+          </td>
+        </tr>
       </tbody>
     </table>
     <h3>Tables</h3>
-    <table border="1" cellpadding="4">
+    <table cellpadding="4" border="1">
       <tbody>
         <tr>
           <td><br>
@@ -432,10 +515,16 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
 &lt;/table&gt;</pre>
             <a href="http://oreillymedia.github.io/HTMLBook/#_tables">http://oreillymedia.github.io/HTMLBook/#_tables</a></td>
         </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td>
+            <pre>\noindent<br>\begin{table}<br>&nbsp;&nbsp;&nbsp; \caption{Just a few names in this table} <br>&nbsp;&nbsp;&nbsp; \begin{center}<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; \begin{tabular}{lllll}<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; \toprule<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Feature &amp; Icon &amp; Description &amp; HTML &amp; LaTeX \\<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; \midrule<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Bold &amp; Fat B &amp; Makes the font look fatter &amp; &lt;b&gt; or &lt;strong&gt; &amp; textbf \\<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Italicise &amp; Italics I &amp; Font leans to the right &amp; &lt;i&gt; or &lt;emph&gt; &amp; textit \\<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Underline &amp; U with a line beneath &amp; Draws a line under the text &amp; text-decoration: underline &amp; underline \\<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; \bottomrule<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; \end{tabular}<br>&nbsp;&nbsp;&nbsp; \end{center}<br>\end{table}</pre>
+          </td>
+        </tr>
       </tbody>
     </table>
     <h3>Images / figures</h3>
-    <table border="1" cellpadding="4">
+    <table cellpadding="4" border="1">
       <tbody>
         <tr>
           <td><br>
@@ -491,10 +580,17 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
             <a href="http://oreillymedia.github.io/HTMLBook/#_figures">http://oreillymedia.github.io/HTMLBook/#_figures</a><br>
           </td>
         </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td>
+            <pre>\renewcommand{\varCaption}{This is an image with the caption: There are three minutes left on the clock.}<br>\renewcommand{\varImgPath}{_content/images/3minutes700x400.jpg}<br>\input{XeTeX/figure_snippet-xe.tex}</pre>
+            This is simplified, using variables and then a LaTeX snippet to
+            create the images.</td>
+        </tr>
       </tbody>
     </table>
     <h3>Structure</h3>
-    <table border="1" cellpadding="4">
+    <table cellpadding="4" border="1">
       <tbody>
         <tr>
           <td><br>
@@ -560,6 +656,21 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
   &lt;/section&gt;
 &lt;/section&gt;</pre>
             <a href="http://oreillymedia.github.io/HTMLBook/#_sections">http://oreillymedia.github.io/HTMLBook/#_sections</a><br>
+          </td>
+        </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td>
+            <pre>\part{Installation}</pre>
+          </td>
+          <td>
+            <pre>\chapter{Style "Heading" with a lot of <br>text, a lot of text, <br>a lot of text, and even more text}</pre>
+          </td>
+          <td>
+            <pre>\section{A section or "SubHeading"}</pre>
+          </td>
+          <td>
+            <pre>\subsection{Sytem requirements}</pre>
           </td>
         </tr>
       </tbody>
