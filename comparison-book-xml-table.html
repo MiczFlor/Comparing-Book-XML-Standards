@@ -32,7 +32,7 @@
     </ul>
     <h2>XML elements and structure</h2>
     <h3>Paragraph formats</h3>
-    <table cellpadding="4" border="1">
+    <table border="1" cellpadding="4">
       <tbody>
         <tr>
           <td><br>
@@ -144,8 +144,46 @@ example, it would have made more sense.  Or less.
         </tr>
       </tbody>
     </table>
+    <h3>Paragraph cluster with headlines</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td>Sub Headline as part of paragraph?</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td>N</td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td>
+            <pre class="programlisting">&lt;article xmlns='http://docbook.org/ns/docbook'&gt;
+&lt;title&gt;Example title&lt;/title&gt;
+&lt;section&gt;
+  &lt;title&gt;A Top Level Section&lt;/title&gt;
+  &lt;para&gt;Actual content.&lt;/para&gt;
+&lt;/section&gt;
+&lt;/article&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/title.html">http://docbook.org/tdg51/en/html/title.html</a><br>
+            See also:<br>
+            <a href="http://docbook.org/tdg51/en/html/section.html">http://docbook.org/tdg51/en/html/section.html</a></td>
+        </tr>
+        <tr>
+          <td>HTML Book</td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <h3>Alignment</h3>
-    <table cellpadding="4" border="1">
+    <table border="1" cellpadding="4">
       <tbody>
         <tr>
           <td><br>
@@ -201,7 +239,7 @@ example, it would have made more sense.  Or less.
       </tbody>
     </table>
     <h3>Font formatting</h3>
-    <table cellpadding="4" border="1">
+    <table border="1" cellpadding="4">
       <tbody>
         <tr>
           <td><br>
@@ -311,7 +349,7 @@ example, it would have made more sense.  Or less.
       </tbody>
     </table>
     <h3> Other elements</h3>
-    <table cellpadding="4" border="1">
+    <table border="1" cellpadding="4">
       <tbody>
         <tr>
           <td><br>
@@ -444,7 +482,7 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
       </tbody>
     </table>
     <h3>Tables</h3>
-    <table cellpadding="4" border="1">
+    <table border="1" cellpadding="4">
       <tbody>
         <tr>
           <td><br>
@@ -524,7 +562,7 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
       </tbody>
     </table>
     <h3>Images / figures</h3>
-    <table cellpadding="4" border="1">
+    <table border="1" cellpadding="4">
       <tbody>
         <tr>
           <td><br>
@@ -589,12 +627,71 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
         </tr>
       </tbody>
     </table>
-    <h3>Structure</h3>
-    <table cellpadding="4" border="1">
+    <h3>Frontmatter</h3>
+    <table border="1" cellpadding="4">
       <tbody>
         <tr>
           <td><br>
           </td>
+          <td>Dedication</td>
+          <td>Collophon</td>
+        </tr>
+        <tr>
+          <td>In Booktype?</td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>DocBook 5.1</td>
+          <td>
+            <pre class="programlisting">&lt;book xmlns='http://docbook.org/ns/docbook'&gt;
+&lt;title&gt;The Best XML Jokes&lt;/title&gt;
+&lt;info&gt;
+  &lt;author&gt;&lt;personname&gt;
+    &lt;firstname&gt;A&lt;/firstname&gt;&lt;surname&gt;Nonymous&lt;/surname&gt;
+  &lt;/personname&gt;&lt;/author&gt;
+&lt;/info&gt;
+
+&lt;dedication&gt;
+&lt;para&gt;To my mother and father, for teaching me to laugh.
+&lt;/para&gt;
+&lt;/dedication&gt;
+
+&lt;chapter&gt;&lt;title&gt;Parsing Jokes&lt;/title&gt;
+&lt;para&gt;What did the lexer say to the angle bracket? …
+&lt;/para&gt;
+&lt;/chapter&gt;
+&lt;!-- ... --&gt;
+&lt;/book&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/dedication.html">http://docbook.org/tdg51/en/html/dedication.html</a></td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>HTML Book</td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>XeTex-Theme4BooktypePDF</td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Structure</h3>
+    <table border="1" cellpadding="4">
+      <tbody>
+        <tr>
+          <td><br>
+          </td>
+          <td>Book</td>
           <td style="height: 19px;">Part</td>
           <td>Chapter</td>
           <td>SubChapter</td>
@@ -602,6 +699,8 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
         </tr>
         <tr>
           <td>In Booktype?</td>
+          <td><br>
+          </td>
           <td>y (called Section)</td>
           <td>y</td>
           <td>n</td>
@@ -610,6 +709,34 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
         </tr>
         <tr>
           <td>DocBook 5.1</td>
+          <td>
+            <pre class="programlisting">&lt;book xmlns='http://docbook.org/ns/docbook'&gt;
+&lt;title&gt;An Example Book&lt;/title&gt;
+&lt;titleabbrev&gt;Example&lt;/titleabbrev&gt;
+&lt;info&gt;
+  &lt;legalnotice&gt;&lt;para&gt;No notice is required.&lt;/para&gt;&lt;/legalnotice&gt;
+  &lt;author&gt;&lt;personname&gt;
+    &lt;firstname&gt;Norman&lt;/firstname&gt;&lt;surname&gt;Walsh&lt;/surname&gt;
+  &lt;/personname&gt;&lt;/author&gt;
+&lt;/info&gt;
+&lt;dedication&gt;
+&lt;para&gt;This book is dedicated to you.
+&lt;/para&gt;
+&lt;/dedication&gt;
+&lt;preface&gt;&lt;title&gt;Foreword&lt;/title&gt;
+&lt;para&gt;Some content is always required.
+&lt;/para&gt;
+&lt;/preface&gt;
+&lt;chapter&gt;&lt;title&gt;A Chapter&lt;/title&gt;
+&lt;para&gt;Content is required in chapters too.
+&lt;/para&gt;
+&lt;/chapter&gt;
+&lt;appendix&gt;&lt;title&gt;Optional Appendix&lt;/title&gt;
+&lt;para&gt;Appendixes are optional.
+&lt;/para&gt;
+&lt;/appendix&gt;
+&lt;/book&gt;</pre>
+            <a href="http://docbook.org/tdg51/en/html/book.html">http://docbook.org/tdg51/en/html/book.html</a></td>
           <td><a href="http://docbook.org/tdg51/en/html/part.html">http://docbook.org/tdg51/en/html/part.html</a></td>
           <td><a href="http://docbook.org/tdg51/en/html/chapter.html">http://docbook.org/tdg51/en/html/chapter.html</a></td>
           <td><br>
@@ -619,6 +746,8 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
         </tr>
         <tr>
           <td>HTML Book</td>
+          <td><br>
+          </td>
           <td>
             <pre data-type="programlisting">&lt;div data-type="part"&gt;
   &lt;h1&gt;Part One: Introduction to Backbone.js&lt;/h1&gt;
@@ -660,6 +789,8 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
         </tr>
         <tr>
           <td>XeTex-Theme4BooktypePDF</td>
+          <td><br>
+          </td>
           <td>
             <pre>\part{Installation}</pre>
           </td>
@@ -670,7 +801,7 @@ Markdown&lt;span data-type="footnote"&gt;Totally made-up statistic&lt;/span&gt;&
             <pre>\section{A section or "SubHeading"}</pre>
           </td>
           <td>
-            <pre>\subsection{Sytem requirements}</pre>
+            <pre>\subsection{Sytem requirements}	</pre>
           </td>
         </tr>
       </tbody>
