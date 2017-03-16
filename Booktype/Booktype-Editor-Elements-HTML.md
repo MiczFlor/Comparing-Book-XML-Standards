@@ -1,4 +1,58 @@
 
+# Inline Plugins
+
+## Bold, Italics, Underline
+
+Editor view:
+
+![Screenshot](img/Booktype-Editor-Inline-BIU.png)
+
+Raw HTML in DB:
+
+```
+<p>Do not forget <span><u>underlined text</u></span>!</p>
+<p>And we have <i>italicised text with <b>bold</b> and <span><u>underlined</u></span> in it</i>.&nbsp;</p>
+<p>And <b>bold text with <i>italicised</i> and <span><u>underlined</u></span> in it</b>.</p>
+<p>And <span><u>underlined text with </u><u><b>bold</b></u><u> and </u><u><i>italicised</i></u><u> and </u><u><b>bolditalicised</b></u><u> in it</u></span>.</p>
+```
+
+## Indentation
+
+Editor view:
+
+![Screenshot](img/Booktype-Editor-Indentation.png)
+
+Raw HTML in DB:
+
+```
+<p>The following paragraph is indented once:</p>
+<p style="margin-left: 48px;">This is the indented paragraph. The next paragraph is indented even more, i.e. twice:</p>
+<p style="margin-left: 96px;">This is the double-indented paragraph.&nbsp;</p>
+<p>And back to no indentation at all.</p>
+```
+
+## Lists
+
+Editor view:
+
+![Screenshot](img/Booktype-Editor-Lists.png)
+
+Raw HTML in DB:
+
+```
+<p>Unordered lists:</p>
+<ul>
+  <li>First item</li>
+  <li>Second item with a soft line<br>break in the middle of the line.</li>
+  <li>Third item.</li>
+</ul>
+<p>Itemised, ordered list:</p>
+<ol>
+  <li>First item</li>
+  <li>Second item with a soft line<br>break in the middle of the line.</li>
+  <li>Third item.</li>
+</ol>
+```
 
 # Block Plugins
 
@@ -119,3 +173,23 @@ Raw HTML in DB:
      </div>
  </div>
 ```
+
+## Endnote
+
+Editor view:
+
+![Screenshot](img/Booktype-Editor-Endnote.png)
+
+Raw HTML in DB:
+
+```
+<p>And back to no indentation at all.<sup class="endnote" data-id="1489675977420">1</sup></p>
+(...)
+<ol class="endnotes" dir="ltr">
+  <li id="endnote-1489675977420">
+    <p>Here is an endnote. At least one for testing what the HTML looks like.</p>
+    <p>And I wrote two lines, sepearted by a RETURN key stroke.</p>
+  </li>
+</ol>
+```
+
