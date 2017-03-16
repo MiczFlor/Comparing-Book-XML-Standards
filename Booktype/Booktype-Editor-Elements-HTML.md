@@ -128,7 +128,7 @@ Raw HTML in DB:
 
 Editor view:
 
-![Screenshot](img/Booktype-Editor-Table-inline.png)
+![Screenshot](img/Booktype-Editor-Table-Caption.png)
 
 Raw HTML in DB:
 
