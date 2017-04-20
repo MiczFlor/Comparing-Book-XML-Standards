@@ -178,7 +178,7 @@ Raw HTML in DB:
 
 Editor view:
 
-![Screenshot](img/Booktype-Editor-Endnote.png)
+![Screenshot](img/Booktype-Edtor-Endnote.png)
 
 Raw HTML in DB:
 
@@ -192,4 +192,28 @@ Raw HTML in DB:
   </li>
 </ol>
 ```
+## Comments
 
+### Current behaviour:
+
+1. Mark some text
+![Screenshot](img/BT-comment-01-marktext.png)
+
+2. Click 'insert comment' button in the slider on the right, this will open the modal to add a comment, showing the marked text.
+![Screenshot](img/BT-comment-02-insertcomment.png)
+
+3. The place of the comment is marked in the text with an icon. The corresponding comment is on the right in the slider.
+![Screenshot](img/BT-comment-03-commentadded.png)
+
+### Desired behaviour
+
+* After the comment has been added, the text that was marked when placing the comment should still be marked. 
+* This is the same behaviour as in Google Docs.
+* When clicking on the marked text, the comment on the right should be "activated" - which means it should be visible and (in our case) the border color becomes active in the editor UI.
+* When copying text containing the comment, or part of the text which has been commented on, and pasting is somewhere else (duplicating it), the comment should also be duplicated BUT wiht a new ID - so if the comment is resolved in one place, the duplicate does not automatically disappear as well.
+
+Raw HTML in DB (current behaviour):
+
+```
+(...)Und die Mama schien ernstlich willens, in Äußerung ihrer Sorgen und Ängste fortzufahren<a id="comment-id-292c4256-4433-462b-b638-e6a1183f9de4" class="comment-link comment-selected"><i class="icon-comment"></i></a>. Aber sie kam (...)
+```
